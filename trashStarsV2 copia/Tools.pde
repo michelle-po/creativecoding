@@ -1,10 +1,10 @@
 void drawParticle(float partSize,PImage sprite) {
   pushMatrix();
   
-  //float[] rota = camera.getRotations();
-  //rotateX(rota[0]);
-  //rotateY(rota[1]);
-  //rotateZ(rota[2]);
+  float[] rota = cameras[0].getRotations(); //BASED ON WITCH CAMERA
+  rotateX(rota[0]);
+  rotateY(rota[1]);
+  rotateZ(rota[2]);
   
   
   beginShape(QUAD);

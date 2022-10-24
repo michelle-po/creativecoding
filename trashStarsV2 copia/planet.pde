@@ -22,12 +22,10 @@ class Planet {
   String noms;
 
 
-
-
   Planet(String _noms, float _distance, int _taille, float _vitesse) {
 
     this.taille=_taille;
-    this.sphere = createShape(SPHERE, this.taille);
+    this.sphere = createShape(BOX, this.taille);
     this.sphere.disableStyle();
     this.texture = loadImage(_noms+".jpg");
     this.distanceX = _distance;

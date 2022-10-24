@@ -56,7 +56,7 @@ public void setup() {
   int gap = 0;
 
   //SUN
-  sphere = createShape(BOX, 100);
+  sphere = createShape(SPHERE, 100);
   this.sphere.disableStyle();
   sun=loadImage("sun.jpg");
 

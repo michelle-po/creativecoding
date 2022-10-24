@@ -14,7 +14,7 @@ Planet [] tabPlan = new Planet[planets.length];
     x=cx;
     y=cy;
 
-    this.asteroid = createShape(SPHERE, 5);
+    this.asteroid = createShape(BOX, 5);
     this.asteroid.disableStyle();
 
     texture=loadImage("fire.jpg");
