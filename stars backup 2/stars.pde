@@ -33,7 +33,7 @@ Asteroid [] tabAst = new Asteroid [5];
 ///////////////////////////////////////////SETUP///////////////////////////////////////////
 
 public void setup() {
-  fullScreen(P3D);
+  fullScreen(P3D, SPAN);
   
   s1 = new Analysor (this, 60);
 

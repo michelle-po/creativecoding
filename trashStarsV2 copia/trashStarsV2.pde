@@ -43,7 +43,7 @@ Etoile [] etoiles = new Etoile[2500];
 public void settings() {
 
   //scene
-  fullScreen(P3D);
+  fullScreen(P3D, SPAN);
   
   //SOUND
   s1 = new Analysor (this, "1.mp3", 60);
