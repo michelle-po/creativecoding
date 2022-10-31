@@ -35,6 +35,8 @@ Planet [] tabPlan = new Planet[planets.length];
 
 Asteroid [] tabAst = new Asteroid [5];
 
+Rocket [] tabRoc = new Rocket [2];
+
 Etoile [] etoiles = new Etoile[2500];
 
 
@@ -67,6 +69,11 @@ public void setup() {
   //ASTEROIDS
   for (int i=0; i<tabAst.length; i++) {
     tabAst[i] = new Asteroid(random(width), random(height));
+  }
+  
+    //Rocket
+  for (int i=0; i<tabRoc.length; i++) {
+    tabRoc[i] = new Rocket(random(width), random(height));
   }
 
   //STARS
@@ -156,16 +163,19 @@ public void displayScene(PeasyCam cam, int ID) {
   // projection - using camera viewport
   perspective(60 * PI/180, w/(float)h, 1, 5000);
 
-  if (ID==0) {
-    float [] pos= tabPlan[2].actualPosition();
-  //  cam.lookAt(pos[0], pos[1]-10, pos[2], 200, 0); //x,y,z,distance,delay
-      cam.lookAt(0, 0, 0, 2000, 0); //x,y,z,distance,delay
-  }
+      cam.lookAt(0, -200, 0, 2200, 0); //x,y,z,distance,delay
 
-  if (ID==1) {
-    //float [] pos= tabPlan[2].actualPosition();
-    cam.lookAt(0, 0, 0, 2000, 0); //x,y,z,distance,delay
-  }
+//  if (ID==0) {
+//    //float [] pos= tabPlan[2].actualPosition();
+//    //  cam.lookAt(pos[0], pos[1]-10, pos[2], 200, 0); //x,y,z,distance,delay
+//    cam.lookAt(0, 0, 0, 2000, 0); //x,y,z,distance,delay
+//  }
+
+//  if (ID==1) {
+//    //float [] pos= tabPlan[2].actualPosition();
+//    cam.lookAt(0, 0, 0, 2000, 0); //x,y,z,distance,delay
+//  }
+
 
   // clear background (scissors makes sure we only clear the region we own)
   background(0);
@@ -195,6 +205,12 @@ public void displayScene(PeasyCam cam, int ID) {
   for (int i=0; i<tabAst.length; i++) {
     tabAst[i].display();
   }
+  
+  
+  //  //Rocket
+  //for (int i=0; i<tabRoc.length; i++) {
+  //  tabRoc[i].display();
+  //}
 
   //STARS
   for (int i=0; i<etoiles.length; i++) {

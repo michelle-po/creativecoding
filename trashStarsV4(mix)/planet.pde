@@ -62,7 +62,7 @@ class Planet {
     translate(this.distanceX, 0, 0);
     rotateY(this.ry);
     
-   // this.sphere.setTexture(this.texture);
+   //this.sphere.setTexture(this.texture);
     noStroke();
     //Camera position
     x = modelX(0, 0, 0);

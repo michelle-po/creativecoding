@@ -140,17 +140,19 @@ public void displayScene(PeasyCam cam, int ID) {
 
   // projection - using camera viewport
   perspective(60 * PI/180, w/(float)h, 1, 5000);
+  
+      cam.lookAt(0, 0, 0, 2000, 0); //x,y,z,distance,delay
 
-  if (ID==0) {
-    //float [] pos= tabPlan[2].actualPosition();
-    //  cam.lookAt(pos[0], pos[1]-10, pos[2], 200, 0); //x,y,z,distance,delay
-    cam.lookAt(0, 0, 0, 2000, 0); //x,y,z,distance,delay
-  }
+//  if (ID==0) {
+//    //float [] pos= tabPlan[2].actualPosition();
+//    //  cam.lookAt(pos[0], pos[1]-10, pos[2], 200, 0); //x,y,z,distance,delay
+//    cam.lookAt(0, 0, 0, 2000, 0); //x,y,z,distance,delay
+//  }
 
-  if (ID==1) {
-    //float [] pos= tabPlan[2].actualPosition();
-    cam.lookAt(0, 0, 0, 2000, 0); //x,y,z,distance,delay
-  }
+//  if (ID==1) {
+//    //float [] pos= tabPlan[2].actualPosition();
+//    cam.lookAt(0, 0, 0, 2000, 0); //x,y,z,distance,delay
+//  }
 
   // clear background (scissors makes sure we only clear the region we own)
   background(0);
