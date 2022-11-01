@@ -19,12 +19,13 @@ class Planet {
   PImage block;
   PImage pizza;
 
+  Pizza [] pizzas = new Pizza[1];
+  Cube [] cubes = new Cube[1];
 
   Planet(String _noms, float _distance, int _taille, float _vitesse) {
 
     this.taille=_taille;
     this.sphere = loadShape(_noms+".obj");
-    //this.sphere.disableStyle();
     this.texture = loadImage(_noms+".jpg");
     this.distanceX = _distance;
     this.vitesse=_vitesse;
@@ -35,16 +36,14 @@ class Planet {
     this.sphereEye = createShape(SPHERE, this.taille);
     this.sphereEye.disableStyle();
 
-    //RUBIK
-    block = loadImage("block.png");
-    textureMode(NORMAL);
+    ////RUBIK
+    //block = loadImage("block.png");
+    //textureMode(NORMAL);
 
-    //PIZZA
-    pizza = loadImage("pizza.png");
-    textureMode(NORMAL);
+    ////PIZZA
+    //pizza = loadImage("pizza.png");
+    //textureMode(NORMAL);
   }
-
-  float x, y, z;
 
   void display() {
 
@@ -56,19 +55,13 @@ class Planet {
     popMatrix();
 
     pushMatrix();
-    lights();
     //translate(width/2, 0);
     rotateY(this.vitesse);
     translate(this.distanceX, 0, 0);
     rotateY(this.ry);
-    
-   //this.sphere.setTexture(this.texture);
+
+    this.sphere.setTexture(this.texture);
     noStroke();
-    //Camera position
-    x = modelX(0, 0, 0);
-    y = modelY(0, 0, 0);
-    z = modelZ(0, 0, 0);
-    
     scale(this.taille);
     rotateX(PI/2);
     shape(this.sphere);
@@ -77,11 +70,7 @@ class Planet {
 
     //rubik
     if (this.noms=="rubik") {
-      pushMatrix();
-      rotateY(this.ry);
-      scale(5);
-      TexturedCube(block);
-      popMatrix();
+      cubes[0].display();
     }
 
     //eye
@@ -93,69 +82,10 @@ class Planet {
       popMatrix();
     }
 
-
     //pizza
     if (this.noms=="pizza") {
-      pushMatrix();
-      rotateY(this.ry);
-      scale(0.008);
-      imageMode(CENTER);
-      image(pizza, 0, 0);
-      popMatrix();
+      pizzas[0].display();
     }
-
     popMatrix();
   }
-
-
-  float [] actualPosition() {
-    float [] pos = {0, 0, 0};
-    pos[0]=x;
-    pos[1]=y;
-    pos[2]=z;
-    return pos;
-  }
-}
-
-void TexturedCube(PImage block) {
-  beginShape(QUADS);
-  texture(block);
-
-  // +Z "front" face
-  vertex(-1, -1, 1, 0, 0);
-  vertex( 1, -1, 1, 1, 0);
-  vertex( 1, 1, 1, 1, 1);
-  vertex(-1, 1, 1, 0, 1);
-
-  // -Z "back" face
-  vertex( 1, -1, -1, 0, 0);
-  vertex(-1, -1, -1, 1, 0);
-  vertex(-1, 1, -1, 1, 1);
-  vertex( 1, 1, -1, 0, 1);
-
-  // +X "right" face
-  vertex( 1, -1, 1, 0, 0);
-  vertex( 1, -1, -1, 1, 0);
-  vertex( 1, 1, -1, 1, 1);
-  vertex( 1, 1, 1, 0, 1);
-
-  // -X "left" face
-  vertex(-1, -1, -1, 0, 0);
-  vertex(-1, -1, 1, 1, 0);
-  vertex(-1, 1, 1, 1, 1);
-  vertex(-1, 1, -1, 0, 1);
-
-  // +Y "bottom" face
-  vertex(-1, 1, 1, 0, 0);
-  vertex( 1, 1, 1, 1, 0);
-  vertex( 1, 1, -1, 1, 1);
-  vertex(-1, 1, -1, 0, 1);
-
-  // -Y "top" face
-  vertex(-1, -1, -1, 0, 0);
-  vertex( 1, -1, -1, 1, 0);
-  vertex( 1, -1, 1, 1, 1);
-  vertex(-1, -1, 1, 0, 1);
-
-  endShape();
 }

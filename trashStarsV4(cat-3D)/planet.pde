@@ -1,14 +1,7 @@
 class Planet {
 
   PShape sphere;
-  PShape sphereMoon;
-  PShape sphereRing;
-
-
   PImage texture;
-  PImage textureMoon;
-  PImage textureRing;
-
 
   float distanceX;
   float positionY;
@@ -25,33 +18,17 @@ class Planet {
   Planet(String _noms, float _distance, int _taille, float _vitesse) {
 
     this.taille=_taille;
-        this.sphere = loadShape(_noms+".obj");
-    //this.sphere.disableStyle();
+    this.sphere = loadShape("cat.obj");
     this.texture = loadImage(_noms+".jpg");
+    println(_noms);
     this.distanceX = _distance;
     this.vitesse=_vitesse;
     this.noms=_noms;
-
-    //MOON
-    this.textureMoon = loadImage("moon.jpg");
-    this.sphereMoon = createShape(SPHERE, 3);
-    this.sphereMoon.disableStyle();
-
-
-    //SATURN RING
-    this.textureRing = loadImage("ring.png");
-    this.sphereRing = loadShape("arc.obj");
-   // this.sphereRing.disableStyle();
-    
-    
-    
   }
 
   float x, y, z;
 
   void display() {
-
-
 
     pushMatrix();
     stroke(255, 50);
@@ -66,49 +43,18 @@ class Planet {
     rotateY(this.vitesse);
     translate(this.distanceX, 0, 0);
     rotateY(this.ry);
-    this.sphere.setTexture(this.texture);
+        rotateX(PI/2);
+
     noStroke();
     //Camera position
     x = modelX(0, 0, 0);
     y = modelY(0, 0, 0);
     z = modelZ(0, 0, 0);
     scale(this.taille);
+    this.sphere.setTexture(this.texture);
     shape(this.sphere);
     this.vitesse+=0.001;
     ry+=0.002;
-
-
-    //moon
-    if (this.noms=="earth") {
-
-      pushMatrix();
-      rotateY(this.ry*10);
-      translate(25, 0);
-
-      rotateY(rmoon);
-
-      this.sphereMoon.setTexture(this.textureMoon);
-      noStroke();
-      shape(this.sphereMoon);
-      popMatrix();
-      rmoon+=0.002;
-    }
-
-
-    ////saturn rings
-    //if (this.noms=="saturn") {
-    //  pushMatrix();
-    //  translate(0, 0);
-    //  rotateZ(PI/1.5);
-    //  scale(3.5);
-    
-    //this.sphereRing.setTexture(this.textureRing);
-    //  fill(128, 128, 128);
-    //  noStroke();
-    //  shape(this.sphereRing);
-    //  popMatrix();
-    //  rmoon+=0.5;
-    //}
 
     popMatrix();
   }

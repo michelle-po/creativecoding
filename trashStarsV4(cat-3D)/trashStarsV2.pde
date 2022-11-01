@@ -18,15 +18,15 @@ PImage part;
 float ry;
 
 PlanetData[] planets= {   //nom, taille, vitesse
-  new PlanetData("head", 10, 15),
-  new PlanetData("pizza", 10, 5 ),
-  new PlanetData("bird", 3, 1),
-  new PlanetData("cat", 10, 35),
-  new PlanetData("heart", 10, 0.04),
-  new PlanetData("saturn", 60, 2 ),
-  new PlanetData("rocket", 1, 6),
-  new PlanetData("rubik", 2, 45),
-  new PlanetData("toilet", 10, 20)
+  new PlanetData("mercury", 10, 15),
+  new PlanetData("venus", 10, 5 ),
+  new PlanetData("earth", 10, 1),
+  new PlanetData("mars", 10, 35),
+  new PlanetData("jupiter", 10, 0.04),
+  new PlanetData("saturn", 10, 2 ),
+  new PlanetData("uranus", 10, 6),
+  new PlanetData("neptune", 10, 45),
+  new PlanetData("pluto", 10, 20)
 };
 
 Planet [] tabPlan = new Planet[planets.length];
@@ -46,15 +46,6 @@ public void settings() {
 public void setup() {
 
   int gap = 0;
-
-  //SUN
-  // sphere = loadShape("cat.obj");
-  // this.sphere.disableStyle();
-  
-  
-  sun=loadImage("duck.jpg");
-
-  cat = loadShape("duck.obj");
 
   //PLANETS
   for (int i=0; i<planets.length; i++) {
@@ -160,8 +151,6 @@ public void displayScene(PeasyCam cam, int ID) {
     cam.lookAt(0, 0, 0, 2000, 0); //x,y,z,distance,delay
   }
 
-  // clear background (scissors makes sure we only clear the region we own)
-  background(0);
 
 
   //////////////OBJECTS DRAW
@@ -175,8 +164,9 @@ public void displayScene(PeasyCam cam, int ID) {
   noStroke();
   rotateZ(PI);
   rotateY(-ry);
-  cat.setTexture(sun);
-  shape(cat);
+  rotateX(PI/4);
+  //cat.setTexture(sun);
+ // shape(cat);
   ry += 0.0001;
   popMatrix();
 
